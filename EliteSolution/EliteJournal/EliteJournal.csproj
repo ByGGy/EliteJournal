@@ -64,8 +64,11 @@
     </Compile>
     <Compile Include="Applicative\EasyLocator.cs" />
     <Compile Include="Domain\GalacticTradingCatalog.cs" />
+    <Compile Include="Domain\LocalMarket.cs" />
     <Compile Include="Domain\MarketCategory.cs" />
     <Compile Include="Domain\MarketGood.cs" />
+    <Compile Include="Domain\SpaceBase.cs" />
+    <Compile Include="Domain\StarSystem.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
