@@ -121,10 +121,12 @@ namespace EliteJournal.Domain
 
             newCatalog.categories.Add(MarketCategory.Create("Waste"));
             newCatalog.commodities.Add(MarketCommodity.Create(newCatalog.categories.Last(), "Biowaste", 74));
+            newCatalog.commodities.Add(MarketCommodity.Create(newCatalog.categories.Last(), "Chemical Waste", 79));
             newCatalog.commodities.Add(MarketCommodity.Create(newCatalog.categories.Last(), "Scrap", 96));
 
             newCatalog.categories.Add(MarketCategory.Create("Weapons"));
             newCatalog.commodities.Add(MarketCommodity.Create(newCatalog.categories.Last(), "Non-Lethal Weapons", 1976));
+            newCatalog.commodities.Add(MarketCommodity.Create(newCatalog.categories.Last(), "Personal Weapons", 4474));
             newCatalog.commodities.Add(MarketCommodity.Create(newCatalog.categories.Last(), "Reactive Armour", 2235));
 
             return newCatalog;
