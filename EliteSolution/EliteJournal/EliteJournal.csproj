@@ -74,16 +74,16 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Presentation\Hello\HelloView.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Presentation\Catalog\CatalogView.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presentation\Hello\HelloView.xaml.cs">
-      <DependentUpon>HelloView.xaml</DependentUpon>
+    <Compile Include="Presentation\Catalog\CatalogView.xaml.cs">
+      <DependentUpon>CatalogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Hello\HelloViewModel.cs" />
+    <Compile Include="Presentation\Catalog\CatalogViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -4,8 +4,8 @@
         xmlns:presentation="clr-namespace:EliteJournal.Presentation"
         Title="Elite Journal" Width="1280" Height="720">
     
-    <Grid>
-        <presentation:HelloView/>
-    </Grid>
+    <UniformGrid Rows="1">
+        <presentation:CatalogView/>
+    </UniformGrid>
     
 </Window>

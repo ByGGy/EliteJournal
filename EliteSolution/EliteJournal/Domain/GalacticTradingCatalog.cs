@@ -131,5 +131,8 @@ namespace EliteJournal.Domain
 
             return newCatalog;
         }
+
+        public IEnumerable<MarketCategory> Categories { get { return this.categories; } }
+        public IEnumerable<MarketCommodity> Commodities { get { return this.commodities; } }
     }
 }

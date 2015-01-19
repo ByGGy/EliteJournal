@@ -1,4 +1,5 @@
-﻿using Infrastructure;
+﻿using EliteJournal.Domain;
+using Infrastructure;
 
 namespace EliteJournal
 {
@@ -16,14 +17,17 @@ namespace EliteJournal
 
         private MessageBus news;
 
+        private GalacticTradingCatalog catalog;
+
         private EasyLocator()
         {
             this.news = new MessageBus();
+
+            this.catalog = GalacticTradingCatalog.CreateDefault();
         }
 
-        public MessageBus News
-        {
-            get { return this.news; }
-        }
+        public MessageBus News { get { return this.news; } }
+
+        public GalacticTradingCatalog Catalog { get { return this.catalog; } }
     }
 }

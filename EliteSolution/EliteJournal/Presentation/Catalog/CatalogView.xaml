@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="EliteJournal.Presentation.CatalogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:presentation="clr-namespace:EliteJournal.Presentation"
+             xmlns:domain="clr-namespace:EliteJournal.Domain">
+    
+    <UserControl.DataContext>
+        <presentation:CatalogViewModel/>
+    </UserControl.DataContext>
+    
+    <ListBox ItemsSource="{Binding CommodityCollection}">
+        <ListBox.ItemTemplate>
+            <DataTemplate DataType="{x:Type domain:MarketCommodity}">
+                <UniformGrid Rows="1">
+                    <Label Content="{Binding Name}"/>
+                    <Label Content="{Binding AveragePrice}" ContentStringFormat="{}{0} Cr"/>
+                </UniformGrid>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+    
+</UserControl>
