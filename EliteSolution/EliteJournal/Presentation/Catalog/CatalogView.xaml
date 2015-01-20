@@ -7,18 +7,23 @@
     <UserControl.DataContext>
         <presentation:CatalogViewModel/>
     </UserControl.DataContext>
-    
-    <ListBox ItemsSource="{Binding CategoryCollection}">
+
+    <ListBox ItemsSource="{Binding CategoryCollection}" HorizontalContentAlignment="Stretch">
         <ListBox.ItemTemplate>
             <DataTemplate DataType="{x:Type domain:MarketCommodity}">
-                <Expander Header="{Binding Name}" IsExpanded="True">
-                    <ListBox ItemsSource="{Binding Commodities}">
+                <Expander Header="{Binding Name}" IsExpanded="True" Background="Silver">
+                    <ListBox ItemsSource="{Binding Commodities}" Grid.IsSharedSizeScope="True">
                         <ListBox.ItemTemplate>
                             <DataTemplate DataType="{x:Type domain:MarketCommodity}">
-                                <UniformGrid Rows="1">
-                                    <Label Content="{Binding Name}"/>
-                                    <Label Content="{Binding AveragePrice}" ContentStringFormat="{}{0} Cr"/>
-                                </UniformGrid>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="NameColumn"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <Label Grid.Column="0" Content="{Binding Name}"/>
+                                    <Label Grid.Column="1" Content="{Binding AveragePrice}" ContentStringFormat="{}{0} Cr"/>
+                                </Grid>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
