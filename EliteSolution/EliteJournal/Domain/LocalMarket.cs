@@ -16,6 +16,7 @@ namespace EliteJournal.Domain
             this.orders = new List<MarketOrder>();
         }
 
+        //TODO : Ability to create an already partially populated market based on SpaceBase Economy
         public static LocalMarket Create()
         {
             LocalMarket newMarket = new LocalMarket();

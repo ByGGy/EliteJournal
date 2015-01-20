@@ -12,20 +12,20 @@ namespace EliteJournal.Domain
 
         private readonly OrderType type;
         private readonly Guid commodityId;
-        private readonly uint buyingPrice;
-        private readonly uint sellingPrice;
+        private readonly uint quantity;
+        private readonly uint price;
 
-        public MarketOrder(OrderType type, MarketCommodity commodity, uint buyingPrice, uint sellingPrice)
+        public MarketOrder(OrderType type, MarketCommodity commodity, uint quantity, uint price)
         {
             this.type = type;
             this.commodityId = commodity.Id;
-            this.buyingPrice = buyingPrice;
-            this.sellingPrice = sellingPrice;
+            this.quantity = quantity;
+            this.price = price;
         }
 
         public OrderType Type { get { return this.type; } }
         public Guid CommodityId { get { return this.commodityId; } }
-        public uint BuyingPrice { get { return this.buyingPrice; } }
-        public uint SellingPrice { get { return this.sellingPrice; } }
+        public uint Quantity { get { return this.quantity; } }
+        public uint Price { get { return this.price; } }
     }
 }

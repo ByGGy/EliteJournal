@@ -2,7 +2,7 @@
 
 namespace EliteJournal.Domain
 {
-    //TODO : Add Governement & Allegiance data
+    //TODO : Add Governement, Allegiance and Economy data
     public class SpaceBase
     {
         private Guid id;
