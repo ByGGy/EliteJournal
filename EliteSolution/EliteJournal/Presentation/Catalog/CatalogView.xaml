@@ -8,13 +8,21 @@
         <presentation:CatalogViewModel/>
     </UserControl.DataContext>
     
-    <ListBox ItemsSource="{Binding CommodityCollection}">
+    <ListBox ItemsSource="{Binding CategoryCollection}">
         <ListBox.ItemTemplate>
             <DataTemplate DataType="{x:Type domain:MarketCommodity}">
-                <UniformGrid Rows="1">
-                    <Label Content="{Binding Name}"/>
-                    <Label Content="{Binding AveragePrice}" ContentStringFormat="{}{0} Cr"/>
-                </UniformGrid>
+                <Expander Header="{Binding Name}" IsExpanded="True">
+                    <ListBox ItemsSource="{Binding Commodities}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate DataType="{x:Type domain:MarketCommodity}">
+                                <UniformGrid Rows="1">
+                                    <Label Content="{Binding Name}"/>
+                                    <Label Content="{Binding AveragePrice}" ContentStringFormat="{}{0} Cr"/>
+                                </UniformGrid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Expander>
             </DataTemplate>
         </ListBox.ItemTemplate>
     </ListBox>

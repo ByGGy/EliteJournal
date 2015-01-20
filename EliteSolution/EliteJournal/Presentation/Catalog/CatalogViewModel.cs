@@ -1,30 +1,29 @@
 ﻿using EliteJournal.Domain;
 using Infrastructure;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EliteJournal.Presentation
 {
     public class CatalogViewModel : ViewModel
     {
-        //TODO : Display in a ListView, grouped by MarketCategory and improve the template
-        private ObservableCollection<MarketCommodity> commodityCollection;
-        public ObservableCollection<MarketCommodity> CommodityCollection
+        private List<MarketCategory> categoryCollection;
+        public List<MarketCategory> CategoryCollection
         {
-            get { return this.commodityCollection; }
+            get { return this.categoryCollection; }
             set
             {
-                if (this.commodityCollection != value)
+                if (this.categoryCollection != value)
                 {
-                    this.commodityCollection = value;
-                    NotifyPropertyChanged("CommodityCollection");
+                    this.categoryCollection = value;
+                    NotifyPropertyChanged("CategoryCollection");
                 }
             }
         }
 
         public CatalogViewModel()
         {
-            this.CommodityCollection = new ObservableCollection<MarketCommodity>(EasyLocator.Instance.Catalog.Commodities.ToList());
+            this.CategoryCollection = EasyLocator.Instance.Catalog.Categories.ToList();
         }
     }
 }

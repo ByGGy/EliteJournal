@@ -6,7 +6,6 @@ namespace EliteJournal.Domain
     {
         private Guid id;
 
-        private Guid categoryId;
         private string name;
         private uint averagePrice;
 
@@ -14,18 +13,16 @@ namespace EliteJournal.Domain
         {
             this.id = Guid.Empty;
 
-            this.categoryId = Guid.Empty;
             this.name = string.Empty;
             this.averagePrice = uint.MinValue;
         }
 
-        public static MarketCommodity Create(MarketCategory category, string name, uint averagePrice)
+        public static MarketCommodity Create(string name, uint averagePrice)
         {
             MarketCommodity newCommodity = new MarketCommodity();
 
             newCommodity.id = Guid.NewGuid();
 
-            newCommodity.categoryId = category.Id;
             newCommodity.name = name;
             newCommodity.averagePrice = averagePrice;
 
@@ -34,7 +31,6 @@ namespace EliteJournal.Domain
 
         public Guid Id { get { return this.id; } }
 
-        public Guid CategoryId { get { return this.categoryId; } }
         public string Name { get { return this.name; } }
         public uint AveragePrice { get { return this.averagePrice; } }
     }
