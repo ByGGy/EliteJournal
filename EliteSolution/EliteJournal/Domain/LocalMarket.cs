@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EliteJournal.Domain
 {
@@ -16,7 +17,6 @@ namespace EliteJournal.Domain
             this.orders = new List<MarketOrder>();
         }
 
-        //TODO : Ability to create an already partially populated market based on SpaceBase Economy
         public static LocalMarket Create()
         {
             LocalMarket newMarket = new LocalMarket();
@@ -25,5 +25,20 @@ namespace EliteJournal.Domain
 
             return newMarket;
         }
+
+        //TODO : Ability to create an already partially populated market based on SpaceBase Economy
+        public static LocalMarket Create(GalacticTradingCatalog catalog)
+        {
+            LocalMarket newMarket = Create();
+
+            catalog.Categories.SelectMany(category => category.Commodities).ToList().ForEach(commodity =>
+            {
+                newMarket.orders.Add(new MarketOrder(MarketOrder.OrderType.Supply, commodity, 0, commodity.AveragePrice));    
+            });
+
+            return newMarket;
+        }
+
+        public IEnumerable<MarketOrder> Orders { get { return this.orders; } }
     }
 }
