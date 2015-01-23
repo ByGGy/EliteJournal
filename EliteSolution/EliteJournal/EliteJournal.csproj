@@ -75,12 +75,20 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Presentation\Universe\UniverseView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Presentation\Catalog\CatalogView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Presentation\Universe\UniverseView.xaml.cs">
+      <DependentUpon>UniverseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Universe\UniverseViewModel.cs" />
     <Compile Include="Presentation\Catalog\CatalogView.xaml.cs">
       <DependentUpon>CatalogView.xaml</DependentUpon>
     </Compile>

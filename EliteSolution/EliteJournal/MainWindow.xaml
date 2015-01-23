@@ -6,6 +6,7 @@
     
     <UniformGrid Rows="1">
         <presentation:CatalogView/>
+        <presentation:UniverseView/>
     </UniformGrid>
     
 </Window>
