@@ -30,7 +30,7 @@ namespace EliteJournal.Domain
             this.market = LocalMarket.Create();
         }
 
-        public static SpaceBase Create(string name, BaseType type, uint distanceFromStar)
+        public static SpaceBase Create(string name, BaseType type, uint distanceFromStar, GalacticTradingCatalog tradingCatalog)
         {
             SpaceBase newBase = new SpaceBase();
 
@@ -39,8 +39,11 @@ namespace EliteJournal.Domain
             newBase.name = name;
             newBase.type = type;
             newBase.distanceFromStar = distanceFromStar;
+            newBase.market = LocalMarket.Create(tradingCatalog);
 
             return newBase;
         }
+
+        public string Name { get { return this.name; } }
     }
 }

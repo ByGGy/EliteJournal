@@ -23,7 +23,7 @@ namespace EliteJournal.Presentation
 
         public CatalogViewModel()
         {
-            this.CategoryCollection = EasyLocator.Instance.Catalog.Categories.ToList();
+            this.CategoryCollection = EasyLocator.Instance.Universe.TradingCatalog.Categories.ToList();
         }
     }
 }

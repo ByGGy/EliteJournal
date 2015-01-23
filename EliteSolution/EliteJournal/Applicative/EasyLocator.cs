@@ -1,5 +1,6 @@
 ﻿using EliteJournal.Domain;
 using Infrastructure;
+using System.Linq;
 
 namespace EliteJournal
 {
@@ -16,18 +17,19 @@ namespace EliteJournal
         }
 
         private MessageBus news;
-
-        private GalacticTradingCatalog catalog;
+        private Universe universe;    
 
         private EasyLocator()
         {
             this.news = new MessageBus();
 
-            this.catalog = GalacticTradingCatalog.CreateDefault();
+            this.universe = new Universe();
+            this.universe.CreateStarSystem("Neto");
+            this.universe.StarSystems.Last().CreateBase("Ising Vision", SpaceBase.BaseType.Station, 650, this.universe.TradingCatalog);
         }
 
         public MessageBus News { get { return this.news; } }
 
-        public GalacticTradingCatalog Catalog { get { return this.catalog; } }
+        public Universe Universe { get { return this.universe; } }
     }
 }
