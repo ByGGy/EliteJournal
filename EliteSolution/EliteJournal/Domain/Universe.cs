@@ -23,6 +23,12 @@ namespace EliteJournal.Domain
 //            else notify failure
         }
 
+        public void RenameStarSystem(StarSystem targetSystem, string newName)
+        {
+            if (!this.starSystems.Select(system => system.Name).Contains(newName))
+                targetSystem.Rename(newName);
+        }
+
         public GalacticTradingCatalog TradingCatalog { get { return this.tradingCatalog; } }
         public IEnumerable<StarSystem> StarSystems { get { return this.starSystems; } }
     }

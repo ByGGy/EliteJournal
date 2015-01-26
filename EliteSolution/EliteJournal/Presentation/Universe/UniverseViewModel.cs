@@ -1,4 +1,5 @@
 ﻿using EliteJournal.Domain;
+using EliteJournal.Messaging;
 using Infrastructure;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,21 @@ namespace EliteJournal.Presentation
                 {
                     this.starSystemCollection = value;
                     NotifyPropertyChanged("StarSystemCollection");
+                }
+            }
+        }
+
+        private StarSystem starSystemSelected;
+        public StarSystem StarSystemSelected
+        {
+            get { return this.starSystemSelected; }
+            set
+            {
+                if (this.starSystemSelected != value)
+                {
+                    this.starSystemSelected = value;
+                    EasyLocator.Instance.News.Publish(new StarSystemSelection(this.starSystemSelected));
+                    NotifyPropertyChanged("StarSystemSelected");
                 }
             }
         }
@@ -42,10 +58,15 @@ namespace EliteJournal.Presentation
         {
             this.StarSystemCollection = EasyLocator.Instance.Universe.StarSystems.ToList();
 
+            EasyLocator.Instance.News.Subscribe<StarSystemChange>(msg =>
+            {
+                this.StarSystemCollection = EasyLocator.Instance.Universe.StarSystems.OrderBy(system => system.Name).ToList();
+            });
+
             this.AddSystemCommand = new SimpleCommand(() =>
             {
                 EasyLocator.Instance.Universe.CreateStarSystem(this.newName);
-                this.StarSystemCollection = EasyLocator.Instance.Universe.StarSystems.ToList();
+                this.StarSystemCollection = EasyLocator.Instance.Universe.StarSystems.OrderBy(system => system.Name).ToList();
                 this.NewName = string.Empty;
             });
         }

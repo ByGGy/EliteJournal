@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="EliteJournal.Presentation.SystemView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:presentation="clr-namespace:EliteJournal.Presentation"
+             xmlns:domain="clr-namespace:EliteJournal.Domain">
+    
+    <UserControl.DataContext>
+        <presentation:SystemViewModel/>
+    </UserControl.DataContext>
+
+    <GroupBox Header="{Binding System.Name}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding NewSystemName}"/>
+
+                <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Rename" Command="{Binding RenameSystemCommand}"/>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>                    
+                </Grid.RowDefinitions>
+                
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding NewName}"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Type"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding SpaceBaseTypeCollection}" SelectedItem="{Binding SpaceBaseTypeSelected}"/>
+                
+                <Label Grid.Row="2" Grid.Column="0" Content="Distance from star (Ls)"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding NewDistance}"/>
+                
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Add" Command="{Binding AddBaseCommand}"/>
+            </Grid>
+        
+            <ListBox Grid.Row="2" ItemsSource="{Binding SpaceBaseCollection}" SelectedItem="{Binding SpaceBaseSelected}" HorizontalContentAlignment="Stretch" Grid.IsSharedSizeScope="True">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type domain:SpaceBase}">
+                        <Grid Background="Silver">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="DistanceColumn"/>
+                                <ColumnDefinition Width="Auto" SharedSizeGroup="TypeColumn"/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Label Grid.Column="0" Content="{Binding DistanceFromStar}" ContentStringFormat="{}{0} Ls"/>
+                            <Label Grid.Column="1" Content="{Binding Type}"/>
+                            <Label Grid.Column="2" Content="{Binding Name}"/>
+                            <Button Grid.Column="3" Content="Delete" IsEnabled="False"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+    </GroupBox>
+
+</UserControl>

@@ -45,5 +45,7 @@ namespace EliteJournal.Domain
         }
 
         public string Name { get { return this.name; } }
+        public BaseType Type { get { return this.type; } }
+        public uint DistanceFromStar { get { return this.distanceFromStar; } }
     }
 }

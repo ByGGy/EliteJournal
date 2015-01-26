@@ -13,7 +13,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
         
             <Grid Grid.Row="0">
@@ -29,22 +28,21 @@
                 
                 <Label Grid.Row="0" Grid.Column="0" Content="Name"/>
                 <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding NewName}"/>
+                
                 <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Content="Add" Command="{Binding AddSystemCommand}"/>
             </Grid>
         
-            <ListBox Grid.Row="1" ItemsSource="{Binding StarSystemCollection}" HorizontalContentAlignment="Stretch">
+            <ListBox Grid.Row="1" ItemsSource="{Binding StarSystemCollection}" SelectedItem="{Binding StarSystemSelected}" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate DataType="{x:Type domain:StarSystem}">
                         <Grid Background="Silver">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             
                             <Label Grid.Column="0" Content="{Binding Name}"/>
-                            <Button Grid.Column="1" Content="Edit" IsEnabled="False"/>
-                            <Button Grid.Column="2" Content="Delete" IsEnabled="False"/>
+                            <Button Grid.Column="1" Content="Delete" IsEnabled="False"/>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

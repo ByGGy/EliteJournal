@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using EliteJournal.Messaging;
 
 namespace EliteJournal.Domain
 {
@@ -30,8 +31,16 @@ namespace EliteJournal.Domain
             return newSystem;
         }
 
+        public Guid Id { get { return this.id; } }
+
         public string Name { get { return this.name; } }
         public IEnumerable<SpaceBase> Bases { get { return this.bases; } }
+
+        internal void Rename(string newName)
+        {
+            this.name = newName;
+            EasyLocator.Instance.News.Publish(new StarSystemChange(this));
+        }
 
         internal void CreateBase(string name, SpaceBase.BaseType type, uint distanceFromStar, GalacticTradingCatalog tradingCatalog)
         {
